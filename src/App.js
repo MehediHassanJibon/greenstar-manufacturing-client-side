@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -8,6 +10,7 @@ function App() {
     Wellcome To Green Manufacturing Limited
   </h1>
   <button className="btn btn-primary">Button</button>
+  <ToastContainer></ToastContainer>
     </div>
   );
 }
