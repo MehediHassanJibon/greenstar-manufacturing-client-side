@@ -4,7 +4,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-     <h1>Wellcome To a Greenstar Manufacturing Limited</h1>
+      <h1 class="text-3xl font-bold underline">
+    Wellcome To Green Manufacturing Limited
+  </h1>
+  <button className="btn btn-primary">Button</button>
     </div>
   );
 }
