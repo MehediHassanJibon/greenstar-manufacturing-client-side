@@ -45,7 +45,9 @@ const MyOrder = ({ order, index }) => {
             <td>{order.orderQuantity}</td>
             <td>${order.totalCost}</td>
             <td>
-               
+            {
+                    order.paid ? <p className='text-green-500'>Paid</p> : <button className='btn btn-xs bg-red-500' onClick={() => handleCancelOrder(order._id)}>Cancel</button>
+                }
             </td>
             <td>
                 {
