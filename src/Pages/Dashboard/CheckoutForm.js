@@ -12,20 +12,23 @@ const CheckoutForm = ({ order }) => {
     const { _id, totalCost, userEmail, userName } = order;
 
     useEffect(() => {
-        fetch('http://localhost:4000/create-payment-intent', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({ totalCost })
+        if (totalCost) {
+            fetch('https://floating-badlands-03455.herokuapp.com/create-payment-intent', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ totalCost })
 
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data?.clientSecret) {
-                    setClientSecret(data.clientSecret);
-                }
-            });
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data?.clientSecret) {
+                        setClientSecret(data.clientSecret);
+                    }
+                });
+        };
+
     }, [totalCost])
 
     const handleSubmit = async (event) => {
@@ -74,7 +77,7 @@ const CheckoutForm = ({ order }) => {
         else {
             setCardError('');
             setTransactionId(paymentIntent.id);
-            console.log(paymentIntent)
+            // console.log(paymentIntent)
             setSuccess('Congrats! Your payment is completed');
 
 
@@ -83,7 +86,7 @@ const CheckoutForm = ({ order }) => {
                 order: _id,
                 transactionId: paymentIntent.id,
             }
-            fetch(`http://localhost:4000/getPayment/${order._id}`, {
+            fetch(`https://floating-badlands-03455.herokuapp.com/getPayment/${order._id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -92,11 +95,10 @@ const CheckoutForm = ({ order }) => {
             }).then(res => res.json())
                 .then(data => {
                     setProcessing(false);
-                    console.log(data)
+                    // console.log(data)
                 });
         }
-
-    }
+    };
 
     return (
         <>

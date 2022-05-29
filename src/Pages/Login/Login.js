@@ -33,7 +33,7 @@ const Login = () => {
 
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password);
-        console.log(data)
+        // console.log(data)
     };
 
     if (eUser || user || gUser) {
@@ -41,7 +41,7 @@ const Login = () => {
     }
 
     return (
-        <div className="grid items-center justify-items-center mt-10 bg-base-200 py-10">
+        <div className="grid items-center justify-items-center mt-10 bg-base-200 py-10 lg:px-10 md:px-5 sm:px-3">
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title">Login!</h2>

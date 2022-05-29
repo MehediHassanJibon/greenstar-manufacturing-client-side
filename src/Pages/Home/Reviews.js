@@ -6,7 +6,7 @@ import Review from './Review';
 
 const Reviews = () => {
     const queryClient = useQueryClient()
-    const { data: reviews, isLoading, refetch } = useQuery(['reviews'], () => fetch(`http://localhost:4000/review`)
+    const { data: reviews, isLoading, refetch } = useQuery(['reviews'], () => fetch(`https://floating-badlands-03455.herokuapp.com/review`)
         .then(res => res.json()))
 
     if (isLoading) {

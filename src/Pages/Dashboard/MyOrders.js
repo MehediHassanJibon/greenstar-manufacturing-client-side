@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 import MyOrder from './MyOrder';
 
 const MyOrders = () => {
@@ -10,18 +11,18 @@ const MyOrders = () => {
     const authEmail = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:4000/order/${authEmail}`)
+        fetch(`https://floating-badlands-03455.herokuapp.com/order/${authEmail}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [setOrders]);
 
-    console.log(orders);
+    // console.log(orders);
 
     return (
-        <div class="mockup-window border bg-base-300">
-            <div class="flex justify-center px-4 py-16 bg-base-200">
-                <div class="overflow-x-auto">
-                    <table class="table w-full">
+        <div className="mockup-window border bg-base-300">
+            <div className="flex justify-center px-4 py-16 bg-base-200">
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
                         {/* <!-- head --> */}
                         <thead>
                             <tr>
